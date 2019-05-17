@@ -10,7 +10,7 @@ RUN apt-get update && \
     export GOROOT=/usr/local/go  && \
     export PATH=$GOROOT/bin:$PATH && \
     go get -u github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/docker-credential-ecr-login && \
-    mv $HOME/go/bin/docker-credential-ecr-login /bin &&
+    mv $HOME/go/bin/docker-credential-ecr-login /bin && \
     rm -f go1.12.2.linux-amd64.tar.gz && \
     apt-get remove --purge -y git && \
     apt-get clean && \
