@@ -12,6 +12,9 @@ RUN apt-get update && \
     go get -u github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/docker-credential-ecr-login && \
     mv $HOME/go/bin/docker-credential-ecr-login /bin && \
     rm -f go1.12.2.linux-amd64.tar.gz && \
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
+    mv kubectl /bin/ && chmod +x /bin/kubectl && \
+    wget https://storage.googleapis.com/kubernetes-helm/helm-v2.14.0-linux-amd64.tar.gz && tar xzvf helm-v2.14.0-linux-amd64.tar.gz && mv linux-amd64/helm /bin/ && chmod +x /bin/helm && \
     apt-get remove --purge -y git && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* *.tar.gz linux-amd64
